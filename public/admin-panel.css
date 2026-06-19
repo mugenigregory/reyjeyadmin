@@ -1,0 +1,174 @@
+body{
+  margin:0;
+  background:#f8fafc;
+  font-family:Inter,sans-serif;
+}
+
+.admin-header{
+  position:sticky;
+  top:0;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:16px;
+  background:linear-gradient(
+    135deg,
+    #4f46e5,
+    #9333ea
+  );
+  color:white;
+}
+
+.admin-header h1{
+  flex:1;
+}
+
+.admin-header button{
+  border:none;
+  background:white;
+  color:#4f46e5;
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+#productsContainer{
+  padding:20px;
+}
+
+.product-card{
+  background:white;
+  border-radius:20px;
+  padding:16px;
+  display:flex;
+  gap:15px;
+  margin-bottom:15px;
+  box-shadow:
+  0 2px 8px rgba(0,0,0,.08);
+}
+
+.product-card img{
+  width:90px;
+  height:90px;
+  object-fit:cover;
+  border-radius:14px;
+}
+
+.product-info{
+  flex:1;
+}
+
+.product-title{
+  font-weight:700;
+}
+
+.product-price{
+  color:#4f46e5;
+  font-weight:800;
+}
+
+.actions{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.actions button{
+  border:none;
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+.edit-btn{
+  background:#eef2ff;
+  color:#4f46e5;
+}
+
+.delete-btn{
+  background:#fee2e2;
+  color:#dc2626;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.hidden{
+  display:none;
+}
+
+.modal-content{
+  width:95%;
+  max-width:700px;
+  background:white;
+  border-radius:24px;
+  padding:20px;
+  max-height:90vh;
+  overflow:auto;
+}
+
+#productForm{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+#productForm input,
+#productForm textarea,
+#productForm select{
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+}
+
+.save-btn{
+  padding:15px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(
+    135deg,
+    #22c55e,
+    #10b981
+  );
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.preview{
+  width:100%;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.preview img,
+.preview video{
+  width:100%;
+}
+
+.toast{
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:99999;
+  padding:14px 20px;
+  border-radius:12px;
+  color:white;
+}
+
+.toast.success{
+  background:#16a34a;
+}
+
+.toast.error{
+  background:#dc2626;
+}

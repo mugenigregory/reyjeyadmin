@@ -1,0 +1,19 @@
+[
+  {
+    "id": "ORD-001",
+    "customerName": "Gregory Mugeni ",
+    "phone": "0766 753 666",
+    "items": [
+      {
+        "title": "Modern Blender",
+        "quantity": 1,
+        "price": 220000
+      }
+    ],
+    "total": 220000,
+    "status": "pending",
+    "date": "05/08/2026, 05:14 PM",
+    "address": "123 Bweyogerere, Kampala",
+    "paymentMethod": "MTN Mobile Money"
+  }
+]

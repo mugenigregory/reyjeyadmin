@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+       <!-- 🌐 FXB META BRAND ICON -->
+<link rel="icon" type="image/png" href="/icon.png" />
+<!-- Optional high-quality mobile icon (Apple touch icon) -->
+
+<!-- Optional high-quality mobile icon -->
+<link rel="apple-touch-icon" href="/icon.png" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jeyrey App – Tutunda, Tugula" />
+  <meta property="og:description" content="Discover deals, electronics, and fast shopping experience built for mobile users." />
+  <meta property="og:image" content="https://jeyrey.onrender.com/icon.png" />
+  <meta property="og:url" content="https://jeyrey.onrender.com" />
+  <meta property="og:site_name" content="Jeyrey" />
+
+  <!-- WhatsApp / Facebook preview optimization -->
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- =========================
+       🐦 TWITTER CARD (extra reach)
+       ========================= -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jeyrey " />
+  <meta name="twitter:description" content="Shop smarter with FXB-powered mobile experience." />
+  <meta name="twitter:image" content="https://jeyrey.onrender.com/icon.png" />
+
+
+<meta name="description" content="Shop electronics, fashion, and daily deals on Jeyrey   ." />
+<meta name="keywords" content="electronics, shopping, Uganda online shop, Jiji.ug,jiji ,jumia uganda, mobile store, deals, gadgets , kampala" />
+<meta name="author" content="FXB Technology" />
+<meta name="robots" content="index, follow" />
+<meta name="language" content="en" />
+<meta name="revisit-after" content="7 days" />
+
+<meta name="theme-color" content="#6d28d9" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Jeyrey" />
+<meta name="mobile-web-app-capable" content="yes" />
+
+
+
+<link rel="manifest" href="/manifest.json" />
+<meta name="application-name" content="Jeyrey App" />
+<meta name="msapplication-TileColor" content="#6d28d9" />
+<meta name="msapplication-TileImage" content="/icon.png" />
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Jeyrey App",
+  "url": "https://jeyrey.onrender.com",
+  "logo": "https://jeyrey.onrender.com/icon.png",
+  "description": "Buy electronics, gadgets, and deals online.Kampala online shopping",
+  "sameAs": [
+    "https://facebook.com/Jeyrey",
+    "https://instagram.com/Jeyrey"
+  ]
+}
+</script>
+
+  <!-- ===============================
+  🎨 FXB UI THEME (Jeyrey Style)
+  Glass + neon + modern SaaS dashboard feel
+  =============================== -->
+  <style>
+    /* Global reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      /* Animated FXB gradient background */
+      background: linear-gradient(-45deg,
+        #0f172a,
+        #1e293b,
+        #0b1220,
+        #111827
+      );
+      background-size: 400% 400%;
+      animation: gradientMove 10s ease infinite;
+      color: white;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Center card */
+    .login-card {
+      width: 380px;
+      padding: 30px;
+      border-radius: 18px;
+
+      /* Glass effect */
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.25);
+      color: white;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 2px rgba(56,189,248,0.2);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 5px;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(56,189,248,0.25);
+    }
+
+    .error {
+      color: #f87171;
+      font-size: 13px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      opacity: 0.5;
+      margin-top: 15px;
+    }
+
+    /* ===============================
+  🌙 FXB GLOBAL STYLE
+  =============================== */
+
+  .fxb-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 9999;
+
+    display: none;
+    justify-content: center;
+  }
+
+  .fxb-card {
+    width: 100%;
+    max-width: 420px;
+
+    border-radius: 18px;
+    overflow: hidden;
+
+    background: #ffffff;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+
+    font-family: system-ui, sans-serif;
+
+    animation: slideUp 0.6s ease;
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* ===============================
+  🔷 HEADER
+  =============================== */
+  .fxb-header {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    padding: 16px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .fxb-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .fxb-icon {
+    width: 42px;
+    height: 42px;
+    background: white;
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+  }
+
+  .fxb-title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .fxb-sub {
+    font-size: 12px;
+    opacity: 0.9;
+  }
+
+  .fxb-close {
+    cursor: pointer;
+    font-size: 18px;
+    opacity: 0.8;
+  }
+
+  .fxb-close:hover {
+    opacity: 1;
+  }
+
+  /* ===============================
+  📦 BODY
+  =============================== */
+  .fxb-body {
+    padding: 16px;
+  }
+
+  .fxb-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px 0;
+  }
+
+  .fxb-list li {
+    font-size: 13px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #374151;
+  }
+
+  .fxb-check {
+    color: #10b981;
+    font-weight: bold;
+  }
+
+  /* ===============================
+  🔘 BUTTON
+  =============================== */
+  .fxb-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+
+    font-weight: 600;
+    color: white;
+
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .fxb-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(79,70,229,0.3);
+  }
+
+
+  </style>
+ 
+<head>
+  <title>Jeyrey Admin Login</title>
+</head>
+
+
+<body>
+
+<div class="login-wrapper">
+
+  <div class="login-card">
+    <div class="logo">🛍️ Jeyrey Admin</div>
+    <div class="subtitle">Secure dashboard login</div>
+
+    <form id="loginForm">
+
+      <input id="username" placeholder="Username" />
+      <input id="password" type="password" placeholder="Password" />
+
+      <button type="submit">Login</button>
+
+    </form>
+
+    <div class="footer">
+      FXB Technology • Admin Control Panel
+    </div>
+  </div>
+
+</div>
+
+
+<!-- FXB INSTALL BANNER -->
+<div class="fxb-banner" id="fxbBanner">
+  <div class="fxb-card">
+
+    <div class="fxb-header">
+      <div class="fxb-header-left">
+        <div class="fxb-icon">🛍️</div>
+        <div>
+          <div class="fxb-title">Install Jayrey</div>
+          <div class="fxb-sub">Get full app experience</div>
+        </div>
+      </div>
+
+      <div class="fxb-close" id="fxbClose">✕</div>
+    </div>
+
+    <div class="fxb-body">
+      <ul class="fxb-list">
+        <li>✓ Fast & offline access</li>
+        <li>✓ Instant notifications</li>
+        <li>✓ Better performance</li>
+        <li>✓ Home screen shortcut</li>
+      </ul>
+
+      <button class="fxb-btn" id="fxbInstall">Install App</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+console.log("🔥 FXB SCRIPT LOADED");
+
+  console.log("✅ DOM READY");
+
+  let deferredPrompt = null;
+
+  const banner = document.getElementById("fxbBanner");
+
+  window.addEventListener("beforeinstallprompt", (e) => {
+    console.log("🚀 INSTALL EVENT FIRED");
+
+    e.preventDefault();
+    deferredPrompt = e;
+
+    banner.style.display = "flex";
+  });
+
+
+  // ===============================
+  // 🔐 LOGIN SYSTEM
+  // ===============================
+  document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    try {
+      // backend login
+      const response = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username, password })
+      });
+
+      // fallback local login (prevents lockout)
+      const localValid =
+        username === "admin" &&
+        password === "adminRay2026";
+
+      if (response.ok || localValid) {
+        sessionStorage.setItem("adminAuthenticated", "true");
+        window.location.href = "/admin-panel.html";
+      } else {
+        alert("Invalid login");
+      }
+
+    } catch (err) {
+      // offline fallback
+      if (username === "admin" && password === "adminRay2026") {
+        sessionStorage.setItem("adminAuthenticated", "true");
+        window.location.href = "/admin-panel.html";
+      } else {
+        alert("Server error");
+      }
+    }
+  });
+
+
+  // ===============================
+  // 📦 INSTALL BANNER
+  // ===============================
+
+  const btnInstall = document.getElementById("fxbInstall");
+  const btnClose = document.getElementById("fxbClose");
+
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    const dismissed = localStorage.getItem("fxb_install_dismissed");
+    const last = dismissed ? parseInt(dismissed) : 0;
+
+    const days = (Date.now() - last) / (1000 * 60 * 60 * 24);
+
+    if (!dismissed || days > 7) {
+      setTimeout(() => {
+        banner.style.display = "flex";
+      }, 3000);
+    }
+  });
+
+  btnInstall?.addEventListener("click", async () => {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+
+    deferredPrompt = null;
+    banner.style.display = "none";
+  });
+
+  btnClose?.addEventListener("click", () => {
+    banner.style.display = "none";
+    localStorage.setItem("fxb_install_dismissed", Date.now().toString());
+  });
+
+});
+</script>
+</body>
+</html>
+

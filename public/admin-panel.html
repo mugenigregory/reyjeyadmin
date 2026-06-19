@@ -1,0 +1,210 @@
+<link rel="stylesheet" href="/admin-panel.css">
+  <!-- 🌐 FXB META BRAND ICON -->
+<link rel="icon" type="image/png" href="/icon.png" />
+<!-- Optional high-quality mobile icon (Apple touch icon) -->
+
+<!-- Optional high-quality mobile icon -->
+<link rel="apple-touch-icon" href="/icon.png" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jeyrey App – Tutunda, Tugula" />
+  <meta property="og:description" content="Discover deals, electronics, and fast shopping experience built for mobile users." />
+  <meta property="og:image" content="https://jeyrey.onrender.com/icon.png" />
+  <meta property="og:url" content="https://jeyrey.onrender.com" />
+  <meta property="og:site_name" content="Jeyrey" />
+
+  <!-- WhatsApp / Facebook preview optimization -->
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- =========================
+       🐦 TWITTER CARD (extra reach)
+       ========================= -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jeyrey " />
+  <meta name="twitter:description" content="Shop smarter with FXB-powered mobile experience." />
+  <meta name="twitter:image" content="https://jeyrey.onrender.com/icon.png" />
+
+
+<meta name="description" content="Shop electronics, fashion, and daily deals on Jeyrey   ." />
+<meta name="keywords" content="electronics, shopping, Uganda online shop, Jiji.ug,jiji ,jumia uganda, mobile store, deals, gadgets , kampala" />
+<meta name="author" content="FXB Technology" />
+<meta name="robots" content="index, follow" />
+<meta name="language" content="en" />
+<meta name="revisit-after" content="7 days" />
+
+<meta name="theme-color" content="#6d28d9" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Jeyrey" />
+<meta name="mobile-web-app-capable" content="yes" />
+
+
+
+<link rel="manifest" href="/manifest.json" />
+<meta name="application-name" content="Jeyrey App" />
+<meta name="msapplication-TileColor" content="#6d28d9" />
+<meta name="msapplication-TileImage" content="/icon.png" />
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Jeyrey App",
+  "url": "https://jeyrey.onrender.com",
+  "logo": "https://jeyrey.onrender.com/icon.png",
+  "description": "Buy electronics, gadgets, and deals online.Kampala online shopping",
+  "sameAs": [
+    "https://facebook.com/Jeyrey",
+    "https://instagram.com/Jeyrey"
+  ]
+}
+</script>
+    <script>
+
+if (
+  sessionStorage.getItem(
+    "adminAuthenticated"
+  ) !== "true"
+) {
+
+  window.location.href =
+    "/adminlogin.html";
+
+}
+
+
+
+document
+.getElementById("backBtn")
+.addEventListener("click", () => {
+
+  sessionStorage.removeItem(
+    "adminAuthenticated"
+  );
+
+  window.location.href =
+    "/admin-login.html";
+
+});
+
+
+</script>
+<body>
+<div id="adminPanel">
+
+  <!-- Header -->
+  <header class="admin-header">
+    <button id="backBtn">
+  <i class="fa-solid fa-arrow-left"></i>
+</button>
+
+
+    <h1>Admin Panel</h1>
+
+    <button id="addBtn">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+  </header>
+
+  <!-- Products List -->
+  <div id="productsContainer"></div>
+
+</div>
+
+<!-- Modal -->
+<div id="productModal" class="modal hidden">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h2 id="modalTitle">Add Product</h2>
+
+      <button id="closeModal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <form id="productForm">
+
+      <input
+        type="text"
+        id="title"
+        placeholder="Product Title"
+        required
+      >
+
+      <input
+        type="number"
+        id="price"
+        placeholder="Price"
+        required
+      >
+
+      <input
+        type="number"
+        id="originalPrice"
+        placeholder="Original Price"
+      >
+
+      <textarea
+        id="description"
+        placeholder="Description"
+      ></textarea>
+
+      <select id="category">
+        <option>Electronics</option>
+        <option>Fashion</option>
+        <option>Home</option>
+        <option>Books</option>
+        <option>Beauty</option>
+      </select>
+
+      <select id="badge">
+        <option value="">No Badge</option>
+        <option>New</option>
+        <option>Best Seller</option>
+        <option>Trending</option>
+      </select>
+
+      <input
+        type="number"
+        id="stock"
+        placeholder="Stock"
+      >
+
+      <input
+        type="number"
+        id="lowStockThreshold"
+        placeholder="Low Stock Threshold"
+      >
+
+      <input
+        type="file"
+        id="mediaFile"
+        accept="image/*,video/*"
+      >
+
+      <div id="previewContainer"></div>
+
+      <button
+        type="submit"
+        class="save-btn"
+      >
+        Save Product
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+<script src="/admin-panel.js"></script>
+</body>
