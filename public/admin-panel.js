@@ -1,7 +1,9 @@
 document.getElementById("backBtn").addEventListener("click", () => {
     window.location.href = "/adminlogin.html"; 
   });
-  
+  document
+  .getElementById("closeModal")
+  .addEventListener("click", closeModal);
 
   
   // =======================================
@@ -67,6 +69,15 @@ function formatUGX(amount){
 }
 
 
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.add("hidden");
+  }
+});
+
+
+
+
 // =======================================
 // OPEN ADD
 // =======================================
@@ -79,9 +90,7 @@ document
 
   form.reset();
 
-  modal.classList.remove(
-    "hidden"
-  );
+openModal();
 
 });
 
@@ -90,16 +99,30 @@ document
 // CLOSE
 // =======================================
 
-document
-.getElementById("closeModal")
-.addEventListener("click",()=>{
 
-  modal.classList.add(
-    "hidden"
-  );
 
+
+
+
+// safer backdrop detection
+modal.addEventListener("click", (e) => {
+  const clickedOutside =
+    e.target === modal;
+
+  if (clickedOutside) {
+    closeModal();
+  }
 });
 
+function openModal() {
+  modal.classList.remove("hidden");
+  document.body.classList.add("modal-open");
+}
+
+function closeModal() {
+  modal.classList.add("hidden");
+  document.body.classList.remove("modal-open");
+}
 
 // =======================================
 // FILE PREVIEW
@@ -177,7 +200,7 @@ form.addEventListener(
         });
 
         await loadProducts();
-  modal.classList.add("hidden");
+closeModal();
 
         showToast(
           "Product updated"
@@ -264,9 +287,6 @@ onclick="editProduct('${product._id || product.id}')"        >
 
 
 
-function closeModal(){
-  modal.classList.add("hidden");
-}
 
 // =======================================
 // DELETE
@@ -311,8 +331,7 @@ window.editProduct = function(id){
     product.lowStockThreshold || 5;
 
   // show modal
-  modal.classList.remove("hidden");
-
+openModal();
   console.log("✏️ Editing product:", product);
 };
 

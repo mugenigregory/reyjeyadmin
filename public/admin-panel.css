@@ -5,34 +5,58 @@ body{
 }
 
 .admin-header{
-  position:sticky;
-  top:0;
-  z-index:999;
-  display:flex;
-  align-items:center;
-  gap:15px;
-  padding:16px;
-  background:linear-gradient(
-    135deg,
-    #4f46e5,
-    #9333ea
-  );
-  color:white;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px 16px;
+
+  /* ✨ Glassmorphism upgrade (feels like iOS / modern Android) */
+  background: rgba(79, 70, 229, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  color: white;
+
+  /* soft depth instead of flat gradient */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
 .admin-header h1{
-  flex:1;
+  flex: 1;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+  font-weight: 700;
 }
 
+/* header buttons become "action pills" */
 .admin-header button{
-  border:none;
-  background:white;
-  color:#4f46e5;
-  width:42px;
-  height:42px;
-  border-radius:12px;
-  cursor:pointer;
+  border: none;
+  background: rgba(255,255,255,0.18);
+  color: white;
+
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
 }
+
+.admin-header button:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.28);
+}
+
 
 #productsContainer{
   padding:20px;
@@ -93,28 +117,12 @@ body{
   color:#dc2626;
 }
 
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.45);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
 
 .hidden{
   display:none;
 }
 
-.modal-content{
-  width:95%;
-  max-width:700px;
-  background:white;
-  border-radius:24px;
-  padding:20px;
-  max-height:90vh;
-  overflow:auto;
-}
+
 
 #productForm{
   display:flex;
@@ -172,3 +180,81 @@ body{
 .toast.error{
   background:#dc2626;
 }
+
+/* ===============================
+   MODAL BACKDROP (SMART BLUR LAYER)
+   =============================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px;
+
+  /* prevents scroll bleed behind modal */
+  overflow: hidden;
+}
+
+/* ===============================
+   MODAL CARD (RESPONSIVE SHEET)
+   =============================== */
+.modal-content {
+  width: 100%;
+  max-width: 520px;
+
+  background: #ffffff;
+  border-radius: 20px;
+
+  /* ✨ native feel depth */
+  box-shadow: 0 25px 80px rgba(0,0,0,0.25);
+
+  /* prevents overflow issues */
+  max-height: 85dvh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  padding: 18px;
+
+  /* smooth entrance feel */
+  animation: modalPop 0.22s ease-out;
+}
+
+/* ✨ smooth "pop in" animation */
+@keyframes modalPop {
+  from {
+    transform: translateY(12px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* ===============================
+   MOBILE FIRST SHEET BEHAVIOR
+   =============================== */
+@media (max-width: 600px){
+  .modal{
+    align-items: flex-end;
+  }
+
+  .modal-content{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    width: 100%;
+
+    /* iOS style safe area feel */
+    padding-bottom: 24px;
+  }
+}
+

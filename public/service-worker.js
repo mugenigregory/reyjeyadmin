@@ -1,4 +1,4 @@
-const CACHE_NAME = 'jeyrey-v78.9';
+const CACHE_NAME = 'jeyrey-v738.9';
 
 // Core app shell (NEVER changes often → stable offline fallback)
 const STATIC_CACHE = [
@@ -13,7 +13,7 @@ const STATIC_CACHE = [
 ];
 
 // Dynamic cache for API/products/images
-const DYNAMIC_CACHE = 'jayrey-dynamic-v259';
+const DYNAMIC_CACHE = 'jayrey-dynamic-v239';
 
 // ===============================
 // 📦 INSTALL EVENT

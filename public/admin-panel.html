@@ -1,4 +1,7 @@
-<link rel="stylesheet" href="/admin-panel.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/admin-panel.css">
   <!-- 🌐 FXB META BRAND ICON -->
 <link rel="icon" type="image/png" href="/file.png" />
 <!-- Optional high-quality mobile icon (Apple touch icon) -->
@@ -67,36 +70,14 @@
   ]
 }
 </script>
-    <script>
-
-if (
-  sessionStorage.getItem(
-    "adminAuthenticated"
-  ) !== "true"
-) {
-
-  window.location.href =
-    "/adminlogin.html";
-
-}
 
 
 
-document
-.getElementById("backBtn")
-.addEventListener("click", () => {
-
-  sessionStorage.removeItem(
-    "adminAuthenticated"
-  );
-
-  window.location.href =
-    "/admin-login.html";
-
-});
 
 
 </script>
+</head>
+
 <body>
 <div id="adminPanel">
 
