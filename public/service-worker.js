@@ -1,11 +1,12 @@
-const CACHE_NAME = 'jeyrey-v7385.9';
+const CACHE_NAME = 'jeyrey-v73885.9';
 
 // Core app shell (NEVER changes often → stable offline fallback)
 const STATIC_CACHE = [
   '/',
   '/admin-panel.html',
   '/adminlogin.html',
-
+"admin-panel.css",
+"admin-panel.js",
   '/file.png',
   '/manifest.json',
   '/offline.html', // 👈 add fallback page
