@@ -1,4 +1,4 @@
-const CACHE_NAME = 'jeyrey-v738.9';
+const CACHE_NAME = 'jeyrey-v7385.9';
 
 // Core app shell (NEVER changes often → stable offline fallback)
 const STATIC_CACHE = [
@@ -6,14 +6,13 @@ const STATIC_CACHE = [
   '/admin-panel.html',
   '/adminlogin.html',
 
-  '/icon.png',
-  '/index.html',
+  '/file.png',
   '/manifest.json',
   '/offline.html', // 👈 add fallback page
 ];
 
 // Dynamic cache for API/products/images
-const DYNAMIC_CACHE = 'jayrey-dynamic-v239';
+const DYNAMIC_CACHE = 'jayrey-dynamic-v2359';
 
 // ===============================
 // 📦 INSTALL EVENT
@@ -22,8 +21,14 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(async (cache) => {
       // Pre-cache core app shell
-      await cache.addAll(STATIC_CACHE);
-    })
+for (const asset of STATIC_CACHE) {
+  try {
+    await cache.add(asset);
+    console.log("Cached:", asset);
+  } catch (err) {
+    console.error("Failed to cache:", asset);
+  }
+}    })
   );
 
   // Force activate new SW immediately
@@ -97,8 +102,8 @@ self.addEventListener('push', (event) => {
 
   const options = {
     body: data.message || 'New update available',
-    icon: '/icon.png',
-    badge: '/icon.png',
+    icon: '/file.png',
+    badge: '/file.png',
       data: {
     url: data.url || '/',
     timestamp: Date.now()

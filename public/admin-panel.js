@@ -1,10 +1,23 @@
 document.getElementById("backBtn").addEventListener("click", () => {
     window.location.href = "/adminlogin.html"; 
   });
-  document
-  .getElementById("closeModal")
-  .addEventListener("click", closeModal);
+ const modal =
+document.getElementById(
+  "productModal"
+);
+  document.addEventListener("DOMContentLoaded", () => {
+   
 
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.add("hidden");
+  }
+});
+
+  document
+    .getElementById("closeModal")
+    .addEventListener("click", closeModal);
+});
   
   // =======================================
 // STATE
@@ -34,10 +47,7 @@ document.getElementById(
   "productsContainer"
 );
 
-const modal =
-document.getElementById(
-  "productModal"
-);
+
 
 const form =
 document.getElementById(
@@ -69,11 +79,7 @@ function formatUGX(amount){
 }
 
 
-modal.addEventListener("click", (e) => {
-  if (e.target === modal) {
-    modal.classList.add("hidden");
-  }
-});
+
 
 
 
@@ -267,14 +273,14 @@ function renderProducts(){
         <button
           class="edit-btn"
 onclick="editProduct('${product._id || product.id}')"        >
-          <i class="fa-solid fa-pen"></i>
+          <i class="fa-solid fa-pen">Edit</i>
         </button>
 
         <button
           class="delete-btn"
           onclick="deleteProduct('${product.id}')"
         >
-          <i class="fa-solid fa-trash"></i>
+          <i class="fa-solid fa-trash">Del</i>
         </button>
 
       </div>
