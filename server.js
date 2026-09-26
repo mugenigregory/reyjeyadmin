@@ -107,6 +107,19 @@ app.get("/", (req, res) => {
 
 });
 
+/*
+  Public storefront shortcut.
+  The admin login remains the root entry point, while customers can use
+  /shop or /shop.html. Keeping these entry points separate avoids exposing
+  admin navigation to the public storefront.
+*/
+app.get("/shop", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "public", "shop.html")
+  );
+});
+
+
 
 app.post(
   "/api/admin/login",
@@ -644,40 +657,54 @@ res.json(cleanProducts);
 // ===============================
 app.post("/api/orders", async (req, res) => {
   try {
-    const { products, total, userId, status } = req.body;
+    /*
+      The storefront sends `items` because that is the field defined by
+      models/Order.js. The previous route expected `products`, which meant
+      the client payload could validate incorrectly and the order items would
+      not be persisted by Mongoose's strict schema.
 
-    // ===============================
-    // 🔐 VALIDATION
-    // ===============================
-    if (!products || !Array.isArray(products) || products.length === 0) {
+      Keep the API aligned with the actual Order model instead of adding a
+      second, conflicting order shape.
+    */
+    const {
+      customerName,
+      items,
+      total,
+      status,
+    } = req.body;
+
+    if (
+      !Array.isArray(items) ||
+      items.length === 0
+    ) {
       return res.status(400).json({
         success: false,
-        message: "Order must include products",
+        message: "Order must include at least one item",
       });
     }
 
-    if (!total || isNaN(Number(total))) {
+    const numericTotal = Number(total);
+
+    if (!Number.isFinite(numericTotal) || numericTotal <= 0) {
       return res.status(400).json({
         success: false,
         message: "Invalid order total",
       });
     }
 
-    // ===============================
-    // 💾 CREATE ORDER
-    // ===============================
     const order = await Order.create({
-      products,
-      total: Number(total),
-      userId: userId || "guest",
+      customerName:
+        String(customerName || "Guest").trim().slice(0, 80),
+
+      items,
+
+      total: numericTotal,
+
       status: status || "pending",
     });
 
     console.log("✅ ORDER CREATED:", order._id);
 
-    // ===============================
-    // RESPONSE
-    // ===============================
     res.status(201).json({
       success: true,
       message: "Order created successfully",

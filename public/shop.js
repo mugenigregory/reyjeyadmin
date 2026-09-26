@@ -602,20 +602,66 @@
         status: "pending",
       });
 
+      /*
+        WhatsApp handoff
+        ----------------
+        0766753666 is converted to Uganda's international format:
+        256766753666.
+
+        We save the order first so the admin still has a database record even
+        if the customer closes WhatsApp before sending the message.
+      */
+      const whatsappNumber = "256766753666";
+
+      const orderReference = data.order?.id
+        ? String(data.order.id).slice(-6).toUpperCase()
+        : "NEW";
+
+      const orderLines = state.cart
+        .map((item) => {
+          const lineTotal = Number(item.price || 0) * item.quantity;
+
+          return `• ${item.title} × ${item.quantity} — ${formatUGX(lineTotal)}`;
+        })
+        .join("\\n");
+
+      const whatsappMessage = [
+        "🛍️ *JEYREY ORDER*",
+        "",
+        `Order: #${orderReference}`,
+        `Customer: ${customerName}`,
+        "",
+        "*Items:*",
+        orderLines,
+        "",
+        `*Total: ${formatUGX(getCartTotal())}*`,
+        "",
+        "I'd like to place this order. Please confirm availability and delivery details.",
+      ].join("\\n");
+
+      const whatsappUrl =
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
       state.cart = [];
       saveCart();
       renderCart();
 
       els.checkoutMessage.textContent =
-        `Order ${data.order?.id ? "#" + String(data.order.id).slice(-6).toUpperCase() : ""} created successfully.`;
+        "Order saved. Opening WhatsApp…";
       els.checkoutMessage.className = "form-message success";
       els.checkoutForm.reset();
 
+      /*
+        Give the browser a moment to paint the success state, then hand the
+        customer to WhatsApp. `location.href` works for both WhatsApp Web and
+        devices with the WhatsApp app installed.
+      */
       setTimeout(() => {
         closeCheckout();
         closeCart();
-        showToast("Order received. Thank you ✦");
-      }, 1200);
+        showToast("Opening WhatsApp ✦");
+        window.location.href = whatsappUrl;
+      }, 650);
     } catch (error) {
       console.error("Checkout error:", error);
       els.checkoutMessage.textContent = error.message;
